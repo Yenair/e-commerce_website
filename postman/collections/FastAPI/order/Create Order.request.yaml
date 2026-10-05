@@ -1,0 +1,63 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/order"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "customer_name": 9133,
+      "itsms": [
+        {
+          "product_id": 2337,
+          "quantity": 1882
+        },
+        {
+          "product_id": 1128,
+          "quantity": 8750
+        }
+      ]
+    }
+  $type: |-
+    {
+      "title": "Order",
+      "type": "object",
+      "properties": {
+        "customer_name": {
+          "type": "integer",
+          "title": "Customer Name"
+        },
+        "itsms": {
+          "type": "array",
+          "title": "Itsms",
+          "items": {
+            "title": "OrderItem",
+            "type": "object",
+            "properties": {
+              "product_id": {
+                "type": "integer",
+                "title": "Product Id"
+              },
+              "quantity": {
+                "type": "integer",
+                "title": "Quantity"
+              }
+            },
+            "required": [
+              "product_id",
+              "quantity"
+            ]
+          }
+        }
+      },
+      "required": [
+        "customer_name",
+        "itsms"
+      ]
+    }
+settings: {}
+examples: ./.resources/Create Order.resources/examples
+order: 1000

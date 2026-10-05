@@ -1,9 +1,13 @@
-# Use this workspace to collaborate
 workspace:
   id: 44c12e45-4fdc-4585-8add-d726a9b6f122
-
-# All resources in the `postman/` folder are automatically registered in Local View.
-# Point to additional files outside the `postman/` folder to register them individually. Example:
-#localResources:
-#  collections:
-#    - ../tests/E2E Test Collection/
+dependencies:
+  collections:
+    24183055-8b5a63ab-a64c-4fbc-9952-7239dbe3c53d:
+      name: localhost:8000
+      path: ../postman/.dependencies/collections/localhost-8000
+localResources:
+  specs:
+    - ../postman/specs/FastAPI/index.json
+resourceNameMappings:
+  specs:
+    - ../postman/specs/FastAPI/index.json: FastAPI
