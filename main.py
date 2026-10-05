@@ -1,21 +1,17 @@
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from database import init_db
 import models
+from routers import products
 
 @asynccontextmanager
 async def lifespan (app: FastAPI):
     init_db()
     yield
 
-app=FastAPI()
+app = FastAPI(lifespan=lifespan)
 
-@app.get("/")
-def home():
-    return {"message": "My shop is running"}
-
-
-
-
-
+app.mount("/static", StaticFiles (directory="static"), name="static")
+app.include_router(products.router)
