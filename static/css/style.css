@@ -34,3 +34,12 @@ main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
 
 .detail { display: flex; gap: 32px; margin-top: 20px; flex-wrap: wrap; }
 .detail img { width: 360px; max-width: 100%; border-radius: 8px; }
+
+.nav-right { float: right; color: white; }
+.nav-right span { margin-right: 12px; }
+nav button { cursor: pointer; }
+
+.auth-form { display: flex; flex-direction: column; max-width: 320px; gap: 8px; }
+.auth-form input { padding: 8px; }
+.auth-form button { padding: 10px; cursor: pointer; }
+.error { color: #c0392b; font-weight: bold; }
