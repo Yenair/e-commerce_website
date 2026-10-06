@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Depends, HTTPException
-from sqlmodel import Session, select
+from sqlmodel import Session, select, col
 
 from database import get_db
 from models import Product
@@ -11,13 +11,16 @@ router = APIRouter()
 @router.get("/")
 def home (
     request: Request, 
+    q: str ="",
     db: Session = Depends(get_db), 
     user=Depends(get_optional_user)
     ):
-
-    products = db.exec (select(Product)).all()
+    query =select(Product)
+    if q.strip():
+        query = query.where(col(Product.name).contains(q.strip()))
+    products = db.exec (query).all()
     return templates.TemplateResponse(
-        request, "product_list.html", {"products": products, "user": user}
+        request, "product_list.html", {"products": products, "user": user, "q": q}
     )
 
 @router.get ("/products/{product_id}")
