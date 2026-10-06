@@ -12,6 +12,14 @@
     <p class="price">{{ "{:,.2f}".format(product.price) }}</p>
     <p>{{ product.description }}</p>
     <p>In stock: {{ product.stock }}</p>
+    {% if product.stock > 0 %}
+    <form action="/cart/add/{{ product.id }}" method="post">
+      <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}">
+      <button type="submit">Add to cart</button>
+    </form>
+    {% else %}
+    <p><strong>Out of stock</strong></p>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

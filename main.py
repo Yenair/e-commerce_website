@@ -6,7 +6,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from auth import NotLoggedIn
 from database import init_db
 import models
-from routers import products, auth_routes
+from routers import products, auth_routes, cart
 
 @asynccontextmanager
 async def lifespan (app: FastAPI):
@@ -23,3 +23,4 @@ async def not_logged_in_handler(request: Request, exc: NotLoggedIn):
 
 app.include_router(products.router)
 app.include_router(auth_routes.router)
+app.include_router(cart.router)

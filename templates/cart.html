@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<h1>Your cart</h1>
+
+{% if items %}
+<table class="cart-table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>
+        <a href="/products/{{ item.product.id }}">{{ item.product.name }}</a>
+      </td>
+      <td>{{ "{:,.2f}".format(item.product.price) }}</td>
+      <td>
+        <form action="/cart/update/{{ item.id }}" method="post" class="inline-form">
+          <input type="number" name="quantity" value="{{ item.quantity }}"
+                 min="0" max="{{ item.product.stock }}">
+          <button type="submit">Update</button>
+        </form>
+      </td>
+      <td>{{ "{:,.2f}".format(item.product.price * item.quantity) }}</td>
+      <td>
+        <form action="/cart/remove/{{ item.id }}" method="post" class="inline-form">
+          <button type="submit">Remove</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Total: {{ "{:,.2f}".format(total) }}</h2>
+
+{% else %}
+<p>Your cart is empty.</p>
+<a href="/">Continue shopping</a>
+{% endif %}
+{% endblock %}

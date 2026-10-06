@@ -43,3 +43,12 @@ nav button { cursor: pointer; }
 .auth-form input { padding: 8px; }
 .auth-form button { padding: 10px; cursor: pointer; }
 .error { color: #c0392b; font-weight: bold; }
+
+.cart-table { width: 100%; border-collapse: collapse; background: white; }
+.cart-table th, .cart-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.inline-form { display: inline; }
+.inline-form input { width: 60px; padding: 4px; }

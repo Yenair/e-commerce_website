@@ -11,6 +11,13 @@
     <img src="{{ url_for('static', path='images/' ~ p.image) }}" alt="{{ p.name }}">
     <h3><a href="/products/{{ p.id }}">{{ p.name }}</a></h3>
     <p class="price">{{ "{:,.2f}".format(p.price) }}</p>
+    <form action="/cart/add/{{ p.id }}" method="post">
+      {% if p.stock > 0 %}
+        <button type="submit">Add to cart</button>
+      {% else %}
+        <button type="button" disabled>Out of stock</button>
+      {% endif %}
+    </form>
   </div>
   {% else %}
   <p>No products yet.</p>
