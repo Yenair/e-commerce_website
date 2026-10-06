@@ -52,3 +52,18 @@ nav button { cursor: pointer; }
 }
 .inline-form { display: inline; }
 .inline-form input { width: 60px; padding: 4px; }
+
+.order {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.order h3 small { font-weight: normal; color: #666; margin-left: 8px; }
+.success {
+  background: #e6f6ec;
+  color: #0a7a3d;
+  padding: 10px 14px;
+  border-radius: 6px;
+}

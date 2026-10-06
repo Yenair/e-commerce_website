@@ -10,8 +10,9 @@
     <nav>
     <a href="/" class="brand">My Shop</a>
     <span class="nav-right">
-    <a href="/cart">Cart</a>
       {% if user %}
+        <a href="/cart">Cart</a>
+        <a href="/orders">My orders</a>
         <span>{{ user.email }}</span>
         <form action="/logout" method="post" style="display:inline">
           <button type="submit">Logout</button>
